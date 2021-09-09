@@ -13,7 +13,7 @@ namespace CleanArchMvc.Domain.Entities
 
         public Category(int id, string name)
         {
-            DomainExceptioValidation.When(id < 0, "Invalid Id value");
+            DomainExceptioValidation.When(id < 0, "Invalid Id value.");
             Id = id;
             CreatedDate = DateTime.Now;
             ValidateDemain(name);
@@ -27,8 +27,8 @@ namespace CleanArchMvc.Domain.Entities
 
         private void ValidateDemain(string name)
         {
-            DomainExceptioValidation.When(string.IsNullOrEmpty(name), "Invalid name. Name is required");
-            DomainExceptioValidation.When(name.Length < 3, "Invalid name, too short, minimum 3 characters");
+            DomainExceptioValidation.When(string.IsNullOrEmpty(name), "Invalid name. Name is required.");
+            DomainExceptioValidation.When(name.Length < 3, "Invalid name, too short, minimum 3 characters.");
             
             Name = name;
         }
