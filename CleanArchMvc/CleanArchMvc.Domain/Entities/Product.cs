@@ -45,7 +45,7 @@ namespace CleanArchMvc.Domain.Entities
             Description = description;
             Price = price;
             Stok = stok;
-            Image = image;
+            Image = image; 
         }
 
         public void Update(int id, string name, string description, decimal price, int stok, string image, int categoryId)
