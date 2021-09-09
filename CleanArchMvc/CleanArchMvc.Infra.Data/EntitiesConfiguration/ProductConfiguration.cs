@@ -8,6 +8,7 @@ namespace CleanArchMvc.Infra.Data.EntitiesConfiguration
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
+            builder.ToTable("PRODUCTS");
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Name).HasMaxLength(100).IsRequired();
             builder.Property(p => p.Description).HasMaxLength(200).IsRequired();
