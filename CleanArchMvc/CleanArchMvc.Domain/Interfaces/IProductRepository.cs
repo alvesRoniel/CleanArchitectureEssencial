@@ -13,6 +13,12 @@ namespace CleanArchMvc.Domain.Interfaces
         Task<IEnumerable<Product>> GetAllProductiesAsync();
 
         /// <summary>
+        /// Retorna apenas um produto
+        /// </summary>
+        /// <returns></returns>
+        Task<Product> GetProductByIdAsync(int? id);
+
+        /// <summary>
         /// Retorna apenas uma produto pelo id informado
         /// </summary>
         /// <param name="id">Id da produto</param>
