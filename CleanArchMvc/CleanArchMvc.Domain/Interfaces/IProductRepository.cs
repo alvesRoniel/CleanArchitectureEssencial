@@ -23,7 +23,7 @@ namespace CleanArchMvc.Domain.Interfaces
         /// </summary>
         /// <param name="id">Id da produto</param>
         /// <returns>Um objeto do tipo produto</returns>
-        Task<Product> GetProductCategoryByIdAsync(int? id);
+        //Task<Product> GetProductCategoryByIdAsync(int? id);
 
         /// <summary>
         /// Cria um novo objeto do tipo produto
