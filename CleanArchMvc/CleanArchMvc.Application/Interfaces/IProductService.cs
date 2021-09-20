@@ -26,7 +26,7 @@ namespace CleanArchMvc.Application.Interfaces
         /// </summary>
         /// <param name="id">Id do produto</param>
         /// <returns></returns>
-        Task<ProductDTO> GetProductsCategoryByIdAsync(int? id);
+        //Task<ProductDTO> GetProductsCategoryByIdAsync(int? id);
 
         /// <summary>
         /// Adicionar um novo produto
@@ -48,5 +48,6 @@ namespace CleanArchMvc.Application.Interfaces
         /// <param name="id">id do produto a ser removido</param>
         /// <returns></returns>
         Task RemoveProductAsync(int? id);
+        
     }
 }

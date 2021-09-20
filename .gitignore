@@ -348,3 +348,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/CleanArchMvc/CleanArchMvc.WebUI/Controllers/ProductController.cs
+/CleanArchMvc/CleanArchMvc.WebUI/Views/Product/Index.cshtml
