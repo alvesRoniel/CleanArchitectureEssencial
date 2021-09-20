@@ -48,5 +48,6 @@ namespace CleanArchMvc.Application.Interfaces
         /// <param name="id">id do produto a ser removido</param>
         /// <returns></returns>
         Task RemoveProductAsync(int? id);
+        
     }
 }
