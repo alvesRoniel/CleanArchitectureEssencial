@@ -48,7 +48,7 @@ namespace CleanArchMvc.Domain.Entities
             Image = image; 
         }
 
-        public void Update(int id, string name, string description, decimal price, int stok, string image, int categoryId)
+        public void Update(string name, string description, decimal price, int stok, string image, int categoryId)
         {
             ValidateDemain(name, description, price, stok, image);
             ModifiedDate = DateTime.Now;
