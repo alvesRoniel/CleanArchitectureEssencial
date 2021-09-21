@@ -31,6 +31,19 @@ namespace CleanArchMvc.WebUI.Controllers
             return View();
         }
 
+        [HttpGet()]
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var categoryDTO = await _categoruyService.GetCategoryByIdAsync(id);
+
+            if (categoryDTO == null) return NotFound();
+
+            return View(categoryDTO);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDTO category)
         {
@@ -40,6 +53,26 @@ namespace CleanArchMvc.WebUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(category);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(CategoryDTO categoryDTO)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _categoruyService.UpdateCategoryAsync(categoryDTO);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(categoryDTO);
         }
     }
 }
