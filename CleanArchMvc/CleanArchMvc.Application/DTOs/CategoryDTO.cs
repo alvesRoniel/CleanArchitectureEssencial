@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace CleanArchMvc.Application.DTOs
 {
@@ -9,6 +10,7 @@ namespace CleanArchMvc.Application.DTOs
         [Required(ErrorMessage ="The Name is Required")]
         [MinLength(3)]
         [MaxLength(100)]
+        [DisplayName("Name of Category")]
         public string Name { get; set; }
     }
 }
