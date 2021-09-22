@@ -25,7 +25,7 @@ namespace CleanArchMvc.Infra.Data.Repositories
 
         public async Task<IEnumerable<Product>> GetAllProductiesAsync() 
         {
-            return await _productContext.DbProducts.ToListAsync();
+            return await _productContext.DbProducts.AsNoTracking().Include(p => p.Category).ToListAsync();
         }
 
         public async Task<Product> GetProductByIdAsync(int? id)

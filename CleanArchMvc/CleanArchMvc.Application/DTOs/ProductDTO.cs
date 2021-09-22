@@ -24,7 +24,6 @@ namespace CleanArchMvc.Application.DTOs
         public string Description { get; set; }
 
 
-        [Required(ErrorMessage = "The {0} is Required")]
         [Column(TypeName ="decimal(18,2)")]
         [DisplayFormat(DataFormatString ="{0:C2}")]
         [DataType(DataType.Currency)]
@@ -32,7 +31,6 @@ namespace CleanArchMvc.Application.DTOs
         public decimal Price { get; set; }
 
 
-        [Required(ErrorMessage = "The {0} is Required")]
         [Range(1,9999)]
         [DisplayName("Stok")]
         public int Stok { get; set; }
