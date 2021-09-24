@@ -7,6 +7,7 @@ namespace CleanArchMvc.Domain.Entities
     {
         public Product(string name, string description, decimal price, int stok, string image)
         {
+            CreatedDate = DateTime.Now;
             ValidateDemain(name, description, price, stok, image);
         }
 
