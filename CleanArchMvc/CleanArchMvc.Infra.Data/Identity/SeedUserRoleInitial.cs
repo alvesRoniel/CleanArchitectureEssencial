@@ -67,11 +67,11 @@ namespace CleanArchMvc.Infra.Data.Identity
                 IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
             }
 
-            if (!_roleManager.RoleExistsAsync("Adin").Result)
+            if (!_roleManager.RoleExistsAsync("Admin").Result)
             {
                 IdentityRole role = new();
-                role.Name = "Adin";
-                role.NormalizedName = "ADIN";
+                role.Name = "Admin";
+                role.NormalizedName = "ADMIN";
                 IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
             }
         }
