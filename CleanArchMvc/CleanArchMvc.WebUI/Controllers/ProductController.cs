@@ -1,9 +1,9 @@
 ﻿using CleanArchMvc.Application.DTOs;
 using CleanArchMvc.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Hosting;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -100,11 +100,13 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDTO);
         }
 
+
         /// <summary>
         /// Metodo resposanvel por recuperar o produto pelo Id e apresentar o view.
         /// </summary>
         /// <param name="id">Id do Produto</param>
         /// <returns>O obj product </returns>
+        [Authorize(Roles ="Admin")]
         [HttpGet()]
         public async Task<IActionResult> Delete(int? id)
         {
