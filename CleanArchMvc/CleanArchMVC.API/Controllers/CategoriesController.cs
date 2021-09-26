@@ -21,10 +21,12 @@ namespace CleanArchMVC.API.Controllers
         }
 
         /// <summary>
-        /// Método responsavél por retornar uma lista com todas as categorias
+        /// Return all categories
         /// </summary>
-        /// <returns>Uma lista com todas as categorias</returns>
+        /// <returns>A list of all categories</returns>
+        /// <response code="404">If categories are not found</response> 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetAllCategories()
         {
             var categories = await _categoryService.GetAllCategoriesAsync();
@@ -32,6 +34,24 @@ namespace CleanArchMVC.API.Controllers
             if (categories == null) return NotFound("Categories not found");
 
             return Ok(categories);
+        }
+
+        /// <summary>
+        /// Returns a category by id
+        /// </summary>
+        /// <param name="id">Category id</param>
+        /// <returns>A polluted category object</returns>
+        /// <response code="404">If categories are not found</response> 
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<CategoryDTO>> GetCategoryById(int id)
+        {
+            var category = await _categoryService.GetCategoryByIdAsync(id);
+
+            if (category == null) return NotFound("Category not found");
+
+            return Ok(category);
+
         }
     }
 }
