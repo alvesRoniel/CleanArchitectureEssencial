@@ -3,7 +3,6 @@ using CleanArchMvc.Application.Interfaces;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Hosting;
 using System.IO;
 using System.Threading.Tasks;
 
