@@ -83,8 +83,6 @@ namespace CleanArchMVC.API.Controllers
         /// <param name="id">Category Id</param>
         /// <param name="categoryDTO"></param>
         /// <returns></returns>
-        /// <response code="200">If Ok</response>   
-        /// <response code="400">If the item is null</response>   
         [HttpPut]
         public async Task<ActionResult> UpdateCategory(int id, CategoryDTO categoryDTO)
         {
@@ -94,5 +92,23 @@ namespace CleanArchMVC.API.Controllers
 
             return Ok(categoryDTO);
         }
+
+
+        /// <summary>
+        /// Remove Category
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <returns></returns>
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<CategoryDTO>> DeleteCategory(int id)
+        {
+            var category = await _categoryService.GetCategoryByIdAsync(id);
+            if (category == null) return  NotFound("Category not found");
+
+            await _categoryService.RemoveCategoryAsync(id);
+
+            return Ok(category);
+        }
+
     }
 }
