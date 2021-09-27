@@ -54,7 +54,6 @@ namespace CleanArchMVC.API.Controllers
 
         }
 
-
         /// <summary>
         /// Add a new category
         /// </summary>
@@ -76,6 +75,24 @@ namespace CleanArchMVC.API.Controllers
             if (categoryDTO == null) return BadRequest("Invalid Data");
             categoryDTO = await _categoryService.AddCategoryAsync(categoryDTO);
             return CreatedAtAction(nameof(GetCategoryById), new { id = categoryDTO.Id }, categoryDTO);
+        }
+
+        /// <summary>
+        /// Upadate Catgory
+        /// </summary>
+        /// <param name="id">Category Id</param>
+        /// <param name="categoryDTO"></param>
+        /// <returns></returns>
+        /// <response code="200">If Ok</response>   
+        /// <response code="400">If the item is null</response>   
+        [HttpPut]
+        public async Task<ActionResult> UpdateCategory(int id, CategoryDTO categoryDTO)
+        {
+            if (id != categoryDTO.Id || categoryDTO == null) return BadRequest();
+
+            await _categoryService.UpdateCategoryAsync(categoryDTO);
+
+            return Ok(categoryDTO);
         }
     }
 }
