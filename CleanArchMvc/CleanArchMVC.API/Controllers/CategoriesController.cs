@@ -53,5 +53,29 @@ namespace CleanArchMVC.API.Controllers
             return Ok(category);
 
         }
+
+
+        /// <summary>
+        /// Add a new category
+        /// </summary>
+        /// <remarks>
+        /// Requisição
+        /// {
+        ///    "name": "Teste de Inclusão"
+        /// }
+        /// </remarks>
+        /// <param name="categoryDTO"></param>
+        /// <returns></returns>
+        /// <response code="201">Returns the newly created item</response>
+        /// <response code="400">If the item is null</response>   
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> AddCategory(CategoryDTO categoryDTO)
+        {
+            if (categoryDTO == null) return BadRequest("Invalid Data");
+            categoryDTO = await _categoryService.AddCategoryAsync(categoryDTO);
+            return CreatedAtAction(nameof(GetCategoryById), new { id = categoryDTO.Id }, categoryDTO);
+        }
     }
 }
