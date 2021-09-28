@@ -33,7 +33,7 @@ namespace CleanArchMvc.Application.Interfaces
         /// </summary>
         /// <param name="productDTO">Produto a ser adicionado</param>
         /// <returns></returns>
-        Task AddProductAsync(ProductDTO productDTO);
+        Task<ProductDTO> AddProductAsync(ProductDTO productDTO);
 
         /// <summary>
         /// Atualiza um produto existente

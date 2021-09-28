@@ -83,10 +83,10 @@ namespace CleanArchMVC.API.Controllers
         /// <param name="id">Category Id</param>
         /// <param name="categoryDTO"></param>
         /// <returns></returns>
-        [HttpPut]
+        [HttpPut("{id:int}")]
         public async Task<ActionResult> UpdateCategory(int id, CategoryDTO categoryDTO)
         {
-            if (id != categoryDTO.Id || categoryDTO == null) return BadRequest();
+            if (id != categoryDTO.Id || categoryDTO == null) return BadRequest("Invalid Data");
 
             await _categoryService.UpdateCategoryAsync(categoryDTO);
 
