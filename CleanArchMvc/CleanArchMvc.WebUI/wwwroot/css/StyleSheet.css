@@ -1,0 +1,62 @@
+﻿/*input[type="file"] {
+    display: none;
+}*/
+
+.imgUpload {
+    padding: 20px 10px;
+    width: 200px;
+    background: #333;
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: .5s;
+    border: 1px solid #333;
+}
+
+    .imgUpload:hover {
+        color: #333;
+        background: #fff;
+    }
+
+
+.capitalize {
+    text-transform: capitalize;
+    border-bottom: 1px solid rgb(226, 226, 226);
+    color: silver;
+}
+.card-evento {
+    position: sticky;
+    --default-height: 25px;
+    top: var(--default-height);
+}
+
+.card-evento-view {
+    position: sticky;
+    top: 10px;
+}
+
+.card-img-block img {
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    width: 100%;
+}
+
+
+#DivA {
+    position: relative;
+    border-width: 2px;
+    width: 90%;
+    height: 100px;
+    left: 0px;
+    float: left;
+}
+
+#DivLateral {
+    position: relative;
+    border-width: 2px;
+    width: 100px;
+    height: 100px;
+    background-color: peachpuff;
+    float: left;
+}

@@ -111,7 +111,7 @@ namespace CleanArchMvc.WebUI.Controllers
             if (ModelState.IsValid)
             {
 
-                if (HttpContext.Request.Form.Files != null)
+                if (HttpContext.Request.Form.Files.Count > 0)
                 {
                     var file = Request.Form.Files[0];
                     if (file.Length > 0)
