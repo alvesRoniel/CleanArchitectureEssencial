@@ -1,5 +1,4 @@
-﻿<link rel="stylesheet" href="~/css/site.css" />
-
+﻿
 
 @model CleanArchMvc.Application.DTOs.ProductDTO
 
@@ -9,120 +8,72 @@
 
 <h2>@ViewData["Title"]</h2>
 
+<div style="width:80%">
+    <form asp-controller="Product" asp-action="Edit" enctype="multipart/form-data">
 
-<div class="row" >
-    <div class="col-md-8 pr-4" style="display:flex">
-        <div class="card rounded shadow-sm">
-            <p>teste</p>
+        <div class="row" style="display:flex">
+            <div class="col-md-8 pr-4">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
 
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-4"  style="display:flex">
-        <div class="card rounded shadow-sm">
-            <div class="card rounded shadow-sm">
-                <p>teste</p>
-            </div>
-        </div>
-    </div>
-</div>
+                <div class="form-group">
+                    <label asp-for="Name" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label asp-for="Description" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
 
-<!--<div class="col-md-8">
-    <form asp-controller="Product" asp-action="Edit" enctype="multipart/form-data">-->
-@*Exibe as mensagens de validação do form*@
-<!--<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Price" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
 
-<input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <label asp-for="Stok" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <input asp-for="Stok" class="form-control" />
+                        <span asp-validation-for="Stok" class="text-danger"></span>
+                    </div>
+                </div>
 
-<div class="form-group">
-    <label asp-for="Name" class="col-md-2 control-label"></label>
-    <div class="col-md-8">
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-</div>
+                <div class="form-group">
+                    <label asp-for="CategoryId" class="col-md-2 control-label"></label>
+                    <div class="col-md-8">
+                        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+                    </div>
+                </div>
 
-<div class="form-group">
-    <label asp-for="Description" class="col-md-2 control-label"></label>
-    <div class="col-md-8">
-        <input asp-for="Description" class="form-control" />
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
-</div>-->
-@*<div class="form-group">
-        <label asp-for="Image" name="files"  class="col-md-2 control-label"></label>
-        <div class="col-md-8">
-            <input asp-for="Image" type="file" name="files" id="upload" #file />
-            <img  src="~/Resources/Images/@Model.Image" name="files" (click)="file.click()" />
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
-    </div>*@
-
-
-
-<!--<div class="form-group">
-    <label asp-for="Price" class="col-md-2 control-label"></label>
-    <div class="col-md-8">
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-</div>
-
-<div class="form-group">
-    <label asp-for="Stok" class="col-md-2 control-label"></label>
-    <div class="col-md-8">
-        <input asp-for="Stok" class="form-control" />
-        <span asp-validation-for="Stok" class="text-danger"></span>
-    </div>
-</div>
-
-<div class="form-group">
-    <label asp-for="CategoryId" class="col-md-2 control-label"></label>
-    <div class="col-md-8">
-        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-8">
-        <input type="hidden" asp-for="Image" />
-        <input type="submit" value="Edit" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-info">Back to List</a>
-    </div>
-</div>-->
-@*CardIMg*@
-@*<div class="card-evento-view shadow-sm">
-            <div class="form-row">
-                <div class="form-group m-0">
-                    <input type="file"
-                           #file
-                           placeholder=""
-                           style="display: none" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-8">
+                        <input type="hidden" asp-for="Image" />
+                        <input type="submit" value="Edit" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-info">Back to List</a>
+                    </div>
                 </div>
             </div>
-            <div class="card profile-card-2">
-                <div class="card-img-block">
-                    <img class="image"
-                         [src]="imagemURL"
-                         alt="Card image cap"
-                         tooltip="Uplaod de Nova Imagem"
-                         [adaptivePosition]="false"
-                         placement="bottom" />
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="Image" class="control-label"></label>
+                    <div>
+                        <input asp-for="Image" type="file" name="files" id="upload" style="margin-bottom:10px" />
+                        <img id="imgUpload" src="~/Resources/Images/@Model.Image" width="300" height="300" onclick="files.click()"/>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>*@
-
-<!--<div class="form-group col-md-4">
-            <label asp-for="Image" name="files" class="control-label"></label>
-            <div>
-                <input asp-for="Image" type="file" name="files" id="upload" />
-                <img src="~/Resources/Images/@Model.Image" name="files" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-        </div>
-
     </form>
-</div>-->
+</div>
+
