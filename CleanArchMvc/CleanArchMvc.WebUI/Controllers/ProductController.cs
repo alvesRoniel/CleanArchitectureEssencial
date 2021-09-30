@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -37,7 +38,6 @@ namespace CleanArchMvc.WebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var productsDTO = await _productService.GetAllProductsAsync();
-
             return View(productsDTO);
         }
 
@@ -56,15 +56,15 @@ namespace CleanArchMvc.WebUI.Controllers
         /// <summary>
         /// Realiza o cadastro o Produto
         /// </summary>
-        [HttpPost] 
+        [HttpPost]
         public async Task<IActionResult> Create(ProductDTO productDTO)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (HttpContext.Request.Form.Files != null)
+                if (HttpContext.Request.Form.Files.Count > 0)
                 {
                     var file = Request.Form.Files[0];
-                    if(file.Length > 0)
+                    if (file.Length > 0)
                     {
                         productDTO.Image = await SaveImage(file);
                     }
@@ -77,7 +77,7 @@ namespace CleanArchMvc.WebUI.Controllers
             return View(productDTO);
         }
 
-       
+
 
         /// <summary>
         /// Carrega um produto para realizar a edição.
@@ -133,7 +133,7 @@ namespace CleanArchMvc.WebUI.Controllers
         /// </summary>
         /// <param name="id">Id do Produto</param>
         /// <returns>O obj product </returns>
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         [HttpGet()]
         public async Task<IActionResult> Delete(int? id)
         {
@@ -152,9 +152,10 @@ namespace CleanArchMvc.WebUI.Controllers
         /// <param name="id">id do produto a ser deletado</param>
         /// <returns></returns>
         [HttpPost(), ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, string image)
         {
             await _productService.RemoveProductAsync(id);
+            DeleteImage(image);
             return RedirectToAction(nameof(Index));
         }
 
