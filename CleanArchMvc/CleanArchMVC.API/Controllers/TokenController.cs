@@ -41,8 +41,6 @@ namespace CleanArchMVC.API.Controllers
                 return BadRequest(ModelState);
             }
         }
-
-
         
         [HttpPost("CreateUser")]
         [ApiExplorerSettings(IgnoreApi = true)]
