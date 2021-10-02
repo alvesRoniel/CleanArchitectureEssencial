@@ -31,6 +31,9 @@ namespace CleanArchMVC.API
         {
             services.AddInfrastructureAPI(Configuration);
 
+            //ATIVA A AUTENTICAÇAO E VALIDA O TOKEN
+            services.AddInfrastructureJWT(Configuration);
+
             //Para resolver o problema de ciclicidade
             services.AddControllers()
                 .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
