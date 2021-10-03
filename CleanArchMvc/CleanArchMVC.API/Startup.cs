@@ -34,31 +34,13 @@ namespace CleanArchMVC.API
             //ATIVA A AUTENTICAÇAO E VALIDA O TOKEN
             services.AddInfrastructureJWT(Configuration);
 
+            services.AddInfrastructureSwagger();
+
             //Para resolver o problema de ciclicidade
             services.AddControllers()
                 .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore
                 );
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "CleanArchMVC.API",
-                    Description = "Creating .NET Core Projects According to the Clean Architecture",
-                    Version = "v1",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Roniel da Silva Alves",
-                        Email = "roniel.alves@gmail.com",
-                        Url = new Uri("https://github.com/alvesRoniel")
-                    }
-                });
-
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
