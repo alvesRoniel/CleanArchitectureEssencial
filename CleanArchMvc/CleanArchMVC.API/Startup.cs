@@ -56,8 +56,12 @@ namespace CleanArchMVC.API
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            //UTILIZADO PARA TRATAR AS RESPOSTAS COM UM CÓDIGO DE ESTADO DE 400 A 599.
+            //ELE VAI EXPLICITAR O ERRO 401 QUE ESTA SENDO EXIBIDO.
+            app.UseStatusCodePages();
 
+            app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

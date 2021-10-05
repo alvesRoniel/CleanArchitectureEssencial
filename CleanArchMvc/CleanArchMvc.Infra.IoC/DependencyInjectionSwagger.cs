@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CleanArchMvc.Infra.IoC
 {
@@ -32,34 +28,35 @@ namespace CleanArchMvc.Infra.IoC
                 //DEFINE AS CONFIGURAÇOES DE SEGURANÇA PARA PODER USAR O JWT NO SWAGGER
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
-                    Name="Authorization",
+                    //definir configuracoes
+                    Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey,
                     Scheme = "Bearer",
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
-                    Description = "JWT authorization header using the bearer scheme. \r\n\r\n Enter 'Bearer' [space]" +
-                    "and then your token in the text input below. \r\n\r\n Example: \"Bearer+66 12345abcdef\" ",
+                    Description = "JWT Authorization header using the Bearer scheme. \r\n\r\n Enter 'Bearer' [space] " +
+                   "and then your token in the text input below.\r\n\r\nExample: \"Bearer 12345abcdef\"",
                 });
 
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
+                      {
+                          new OpenApiSecurityScheme
                             {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            }
-                        },
-                        Array.Empty<string>()
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
                     }
                 });
 
                 //PARA SALVAR O XML COM A DOCUMENTAÇ;AO DOS ENDPOINTS
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+               // c.IncludeXmlComments(xmlPath);
             });
 
             return services;

@@ -32,8 +32,7 @@ namespace CleanArchMvc.Infra.IoC
 
                     ValidIssuer = configuration["Jwt:Issuer"],
                     ValidAudience = configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                                            Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecretKey"])),
                     ClockSkew = TimeSpan.Zero
                 };
             });
