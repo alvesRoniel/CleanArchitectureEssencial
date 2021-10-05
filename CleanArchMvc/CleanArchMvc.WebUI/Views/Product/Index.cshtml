@@ -29,6 +29,9 @@
         <thead>
             <tr>
                 <th>
+                    Image
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.Name)
                 </th>
                 <th>
@@ -48,33 +51,45 @@
         <tbody>
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.Name)
-                </td>
-                <td class="text-center">
-                    <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
-                        <span class="fas fa-edit">Edit</span>
-                    </a>
+                <tr>
+                    <td>
+                        @if (@Html.DisplayFor(model => item.Image) != null)
+                        {
+                            <img height="45" width="45" src="~/Resources/Images/@Html.DisplayFor(model => item.Image)" />
+                        }
+                        else
+                        {
+                            <img height="45" width="45" src="~/Resources/Images/semImagem.jpg" />
+                        }
 
-                    <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
-                        <span class="fas fa-search">Details</span>
-                    </a>
+                    </td>
 
-                    <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
-                        <span class="fas fa-trash-alt">Delete</span>
-                    </a>
-                </td>
-            </tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Name)
+                    </td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.Id" title="Edit" class="btn btn-warning">
+                            <span class="fas fa-edit">Edit</span>
+                        </a>
+
+                        <a asp-action="Details" asp-route-id="@item.Id" title="Details" class="btn btn-primary">
+                            <span class="fas fa-search">Details</span>
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.Id" title="Delete" class="btn btn-danger">
+                            <span class="fas fa-trash-alt">Delete</span>
+                        </a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>

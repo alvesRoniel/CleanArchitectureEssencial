@@ -12,12 +12,12 @@
         <dd class="col-sm-10">
             @if (!ViewBag.ImageExist)
             {
-                <img src="~/images/semImagem.jpg" class="rounded-circle"
+                <img src="~/Resources/Images/semImagem.jpg" class="rounded-circle"
                      height="300" width="300" asp-append-version="true" />
             }
             else
             {
-                <img src="~/images/@Model.Image" class="rounded-circle"
+                <img src="~/Resources/Images/@Model.Image" class="rounded-circle"
                      height="300" width="300" asp-append-version="true" />
             }
         </dd>

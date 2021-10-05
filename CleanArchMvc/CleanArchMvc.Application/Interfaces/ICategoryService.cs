@@ -24,7 +24,7 @@ namespace CleanArchMvc.Application.Interfaces
         /// </summary>
         /// <param name="categoryDto">Ojeto a ser criado</param>
         /// <returns></returns>
-        Task AddCategoryAsync(CategoryDTO categoryDto);
+        Task<CategoryDTO> AddCategoryAsync(CategoryDTO categoryDto);
 
         /// <summary>
         /// Atualiza os dados de uma categoria existente

@@ -1,0 +1,15 @@
+﻿input[type="file"] {
+    display: none;
+}
+
+#imgUpload {
+    padding: 10px 5px;
+    width: 350px;
+    background: #333;
+    color: #fff;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+    border: 1px solid #333;
+}
+

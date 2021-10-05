@@ -52,9 +52,9 @@ namespace CleanArchMvc.Application.Services
         //    return _mapper.Map<ProductDTO>(await _mediator.Send(productByIdQuery));
         //}
 
-        public async Task AddProductAsync(ProductDTO productDTO)
+        public async Task<ProductDTO> AddProductAsync(ProductDTO productDTO)
         {
-            await _mediator.Send(_mapper.Map<ProductCreatCommand>(productDTO));
+            return _mapper.Map<ProductDTO>(await _mediator.Send(_mapper.Map<ProductCreatCommand>(productDTO)));
         }
 
         public async Task RemoveProductAsync(int? id)
