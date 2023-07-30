@@ -1,19 +1,9 @@
 using CleanArchMvc.Infra.IoC;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace CleanArchMVC.API
 {
@@ -33,7 +23,6 @@ namespace CleanArchMVC.API
 
             //ATIVA A AUTENTICAÇAO E VALIDA O TOKEN
             services.AddInfrastructureJWT(Configuration);
-
             services.AddInfrastructureSwagger();
 
             //Para resolver o problema de ciclicidade
@@ -58,6 +47,10 @@ namespace CleanArchMVC.API
 
             //UTILIZADO PARA TRATAR AS RESPOSTAS COM UM CÓDIGO DE ESTADO DE 400 A 599.
             //ELE VAI EXPLICITAR O ERRO 401 QUE ESTA SENDO EXIBIDO.
+            app.UseStatusCodePages();
+
+            //Trata as resposta com um código de status de 400 a 599
+            //Vai explicitar o erro 401 no que está sendo exibido 
             app.UseStatusCodePages();
 
             app.UseRouting();
